@@ -424,7 +424,17 @@ function bespokeStitches(x,palette){
  const key=primitives[id]?id:(aliases[id]||'flower'),shape=primitives[key]||primitives.flower;
  return '<g transform="translate('+x+' '+y+') scale('+scale+')" stroke="'+palette[3]+'" fill="'+palette[1]+'" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">'+shape+'</g>'
  };
- return motif(left,81,142,.95)+motif(right,432,143,.72)
+ const subject=primitives[left]||primitives[aliases[left]]||primitives.flower;
+ const accent=primitives[right]||primitives[aliases[right]]||primitives.star;
+ let hash=0;for(const c of x[0])hash=(Math.imul(hash,33)+c.charCodeAt(0))>>>0;
+ const layout=hash%5, tilt=[-14,11,-6,9,0][layout], secondary=[350,373,350,370,343][layout];
+ const yarn='<pattern id="stitch-'+hash+'" width="12" height="13" patternUnits="userSpaceOnUse"><path d="M2 0 Q-2 7 6 11 Q12 7 10 0" stroke="'+palette[3]+'" stroke-opacity=".22" stroke-width="1.8" fill="none"/></pattern>';
+ const display=(shape,x,y,scale,rotation,fill)=>'<g transform="translate('+x+' '+y+') rotate('+rotation+') scale('+scale+')" stroke="'+palette[3]+'" fill="'+fill+'" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">'+shape+'</g><g transform="translate('+x+' '+y+') rotate('+rotation+') scale('+scale+')" stroke="url(#stitch-'+hash+')" fill="none" stroke-width="1" opacity=".35">'+shape+'</g>';
+ const big=display(subject,[243,225,253,235,251][layout],144,2.15,tilt,palette[1]);
+ const small=display(accent,secondary,[110,153,170,105,156][layout],1.08,-tilt,palette[0]);
+ const ground='<path d="M65 230 Q154 211 260 229 T455 227" stroke="'+palette[3]+'" stroke-width="3" fill="none" stroke-dasharray="2 7"/>';
+ const props=Array.from({length:4},(_,i)=>'<circle cx="'+(85+(hash+i*43)%360)+'" cy="'+(45+(hash+i*19)%42)+'" r="'+(3+i%2)+'" fill="'+palette[2]+'" opacity=".5"/>').join('');
+ return '<defs>'+yarn+'</defs><g>'+big+small+ground+props+'</g>'
 }
 
 function knitArt(x){
@@ -496,7 +506,7 @@ function knitArt(x){
  '<rect width="520" height="310" fill="'+cream+'"/><rect width="520" height="310" fill="url(#knit)"/>'+
  '<ellipse cx="260" cy="232" rx="188" ry="24" fill="'+ink+'" opacity=".13"/>'+
  '<ellipse cx="260" cy="157" rx="160" ry="120" fill="'+warm+'" opacity=".38"/>'+
- '<g filter="url(#yarn)">'+motifs[key]()+'</g>'+bespokeStitches(x,p)+little+
+ '<g filter="url(#yarn)">'+(individualYarnDetails[name]?bespokeStitches(x,p):motifs[key]())+'</g>'+little+
  '<path d="M 40 253 Q 259 243 479 253" fill="none" stroke="'+main+'" stroke-width="3" stroke-dasharray="4 8"/>'+
  '<rect x="74" y="256" width="372" height="39" rx="12" fill="'+cream+'" fill-opacity=".95" stroke="'+main+'" stroke-width="1.5"/>'+
  '<text x="260" y="281" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="'+(short.length>23?16:19)+'" fill="'+ink+'">'+esc(short)+'</text>'+
