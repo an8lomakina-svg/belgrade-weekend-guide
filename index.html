@@ -277,6 +277,66 @@ const yarnPalettes=[
  ['#b4c8a0','#eff3e5','#668358','#536747'],['#c2b3a3','#f2e9de','#796859','#615247']
 ];
 
+
+const handpickedScenes=Object.fromEntries("panda|panda,bamboo\nkonoha|ninja,leaf\npunch ramen|key,noodles\ntaiyaki|fish,cake\nlorenzo|mask,chair\nbunny|rabbit,carrot\nzmajeva|dragon,dice\nhard rock|guitar,vinyl\npaleto|clay,cup\nboya|vase,brush\natelje 138|easel,flower\nplavi|brush,paint\nametrin|crystal,flower\ntwentyfive|rug,loom\nlipstick|lipstick,sparkle\nkartland|kart,flag\npalata nauke|atom,planet\ncineplexx|film,popcorn\nbotako|pizza,pasta\noh dumpling|dumpling,steam\nsmash burgers|burger,fries\nmanakova|loom,house\neje|fan,sushi\nking tut|pyramid,sun\nwhite eggegg|mountain,dumpling\nr-tiam|noodles,chopsticks\ntrueramen|ramen,egg\nurban ramen|ramen,city\nistok|pho,herbs\niva new|plate,leaf\nbela reka|river,bread\ncomunale|pasta,wine\nmezestoran|olives,leaf\ntri šešira|hat,violin\nambar|bread,plate\nangry monk|monk,noodles\nd59b|beans,drop\ndrip specialty|dripper,beans\nmagazin 1907|arch,cup\nblaznavac|chandelier,cocktail\n7am|sun,beans\nartist specialty|brush,cup\nkiosk|window,cup\nkafograf|camera,cup\nmandarina|cake,orange\nkuća čaja|teapot,leaf\nmimosa|eggs,flower\nlumi|lamp,cup\niluzija|eye,spiral\nčokolade|chocolate,cup\nnikole tesle|lightning,coil\nnauke i tehnike|gear,robot\njugoslavije|star,flag\nsilosi|silos,spray\nsavremene umetnosti|abstract,frame\nafričke|mask,drum\nbemus|piano,notes\nnoćni bazar|lantern,market\nstandupfest|microphone,smile\nкалемегдан|fortress,river\nземунская набережная|waves,bench\nгардош|tower,sun\nташмайдан|church,tree\nада циганлия|bicycle,lake\nкосанчићев|cobblestone,lamp\nботанический сад|greenhouse,flower\nпарк ушће|confluence,tree\nпарк кошутняк|pine,deer\nнациональный музей|painting,columns\nэтнографический|costume,loom\nприкладного искусства|chair,vase\nдом цветов|flower,portrait\nскадарлия|violin,lamp\nисторический центр|shoes,fortress\nземун с гидом|tower,map\nбелград xx|tram,building\nподземный|tunnel,torch\nкоммунистический|star,bus\nархитектура савамалы|skyscraper,bridge\nэкскурсия по музею николы|coil,guide\nэкскурсия по национальному|painting,guide\nэкскурсия по музею югославии|portrait,guide\nкруиз по саве|boat,bridge\nзакатный круиз|boat,sun\nчастный двухчасовой|speedboat,glasses\nземун и башня|tower,guide\nисторический белград|fortress,map\nгастротур|fork,snacks\nэкскурсия в нови-сад|vineyard,clock\nголубац|fortress,speedboat\nджазовый фестиваль|sax,notes\nкнижная ярмарка|book,stack\nредкие земли|crystal,abstract\nкинодни|film,flag\nužitak|cup,dessert\nkofilin|syrniki,coffee\npastis|wine,croissant\nsimbol|coffee,symbol\nputer|butter,croissant\nbistro mali|wine,plate".split('\n').map(s=>s.split('|')));
+function bespokeStitches(x,palette){
+ const name=x[0].toLowerCase();
+ const picked=handpickedScenes[Object.keys(handpickedScenes).find(k=>name.includes(k))]||'flower,star';
+ const [left,right]=picked.split(',');
+ const primitives={
+ panda:'<circle r="22"/><circle cx="-17" cy="-21" r="10"/><circle cx="17" cy="-21" r="10"/><ellipse cx="-9" cy="-3" rx="6" ry="9"/><ellipse cx="9" cy="-3" rx="6" ry="9"/>',
+ rabbit:'<ellipse cx="-12" cy="-23" rx="9" ry="24"/><ellipse cx="12" cy="-23" rx="9" ry="24"/><circle cy="10" r="22"/>',
+ guitar:'<path d="M-14 28 Q-38 19-18-8 L-3-6 L21-32 L31-22 L8 8 Q18 34-14 28Z"/>',
+ ninja:'<circle r="24"/><rect x="-20" y="-6" width="40" height="12" rx="6"/>',
+ fish:'<path d="M-28 0 Q0-23 23 0 Q0 23-28 0 L-36-15 V15Z"/>',
+ key:'<circle cx="-15" cy="-15" r="11"/><path d="M-8-8 L23 23 L23 10 L32 10"/>',
+ dragon:'<path d="M-30 17 Q-28-26-11-8 L0-30 L10-9 Q32-24 30 15 Q7 30-30 17Z"/>',
+ cup:'<path d="M-25-17 H17 V20 H-23Z M17-9 Q37-15 31 7 Q27 16 17 11"/>',
+ cake:'<path d="M-29 11 L-17-18 H20 L30 11 V29 H-29Z"/><path d="M-17-18 Q0-30 20-18"/>',
+ pizza:'<path d="M-31-20 Q0-36 31-20 L0 32Z"/><circle cx="-7" cy="-11" r="5"/><circle cx="12" cy="-7" r="5"/>',
+ burger:'<path d="M-29-4 Q-31-32 0-31 Q31-32 29-4 M-30 3 H30 M-29 15 H29 M-27 24 H27"/>',
+ dumpling:'<path d="M-30 12 Q-28-29 0-26 Q28-29 30 12 Q0 34-30 12Z"/>',
+ wine:'<path d="M-21-30 H21 Q25 12 0 14 Q-25 12-21-30Z M0 14 V30 M-17 30 H17"/>',
+ teapot:'<path d="M-23-13 H23 V24 H-23Z M-23-11 Q-44-11-33 9 L-23 10 M23-11 Q41-12 33 9 L23 10"/>',
+ flower:'<circle cx="0" cy="-18" r="13"/><circle cx="18" r="8" /><circle cx="-18" r="8"/><circle cx="0" cy="18" r="13"/>',
+ leaf:'<path d="M-30 24 Q-29-24 28-29 Q22 25-30 24Z"/>',
+ sun:'<circle r="20"/><path d="M0-36 V-27 M0 27 V36 M-36 0 H-27 M27 0 H36"/>',
+ star:'<path d="M0-34 L10-11 L33-10 L15 5 L20 30 L0 17 L-21 30 L-16 5 L-34-10 L-10-11Z"/>',
+ mask:'<path d="M-28-29 Q0-37 28-29 L18 17 L0 31 L-18 17Z"/>',
+ hat:'<path d="M-22 14 L-12-18 H13 L24 14Z M-34 14 H34"/>',
+ violin:'<path d="M0-32 V-9 Q-23-20-25 4 Q-17 33 0 16 Q17 33 25 4 Q23-20 0-9Z"/>',
+ ramen:'<path d="M-32-7 H32 Q29 30 0 30 Q-29 30-32-7Z"/><path d="M-20-15 Q-10-30 0-15 Q10 0 20-16"/>',
+ noodles:'<path d="M-25-30 Q-8-7-25 24 M0-30 Q16-7 0 24 M22-30 Q40-7 22 24"/>',
+ brush:'<path d="M-24 29 L13-11 M12-12 Q34-34 29-14 L19-3Z"/>',
+ vase:'<path d="M-13-30 H13 L8-12 Q31 3 21 25 Q0 36-21 25 Q-31 3-8-12Z"/>',
+ film:'<rect x="-29" y="-24" width="58" height="48" rx="6"/><path d="M-20-24 V24 M20-24 V24 M-29-7 H29 M-29 8 H29"/>',
+ book:'<path d="M-31-25 Q-11-30 0-19 Q11-30 31-25 V26 Q12 21 0 31 Q-12 21-31 26Z M0-19 V31"/>',
+ painting:'<rect x="-30" y="-29" width="60" height="58"/><path d="M-18 14 L-4-12 L8 9 L20-16"/>',
+ boat:'<path d="M-32 5 H32 L17 25 H-16Z M-16 5 V-23 H18 V5"/>',
+ fortress:'<path d="M-32 29 V-17 H-18 V-29 H-4 V-17 H9 V-29 H22 V-17 H32 V29Z"/>',
+ tower:'<path d="M-24 29 V-18 H24 V29Z M-30-18 L0-35 L30-18Z"/>',
+ tree:'<path d="M0 32 V6 M-27 3 Q-42-24-7-21 Q-6-40 20-23 Q42-16 26 11 Q4 20-27 3Z"/>',
+ lightning:'<path d="M5-35 L-22 5 H-3 L-12 35 L24-13 H7Z"/>',
+ atom:'<ellipse rx="29" ry="11"/><ellipse rx="29" ry="11" transform="rotate(60)"/><ellipse rx="29" ry="11" transform="rotate(120)"/><circle r="6"/>',
+ microphone:'<rect x="-12" y="-31" width="24" height="44" rx="12"/><path d="M-24-3 Q-24 25 0 25 Q24 25 24-3 M0 25 V34"/>',
+ bicycle:'<circle cx="-20" cy="17" r="15"/><circle cx="21" cy="17" r="15"/><path d="M-20 17 L-3-12 L21 17 H-20 M-3-12 H16"/>',
+ crystal:'<path d="M0-34 L24-12 L16 23 L-15 23 L-25-12Z M0-34 V23 M-25-12 L24-12"/>',
+ spiral:'<path d="M0 0 Q0-8 8-8 Q24-3 19 13 Q10 29-10 21 Q-30 6-20-20 Q-5-39 24-23"/>',
+ drum:'<ellipse cy="-19" rx="25" ry="10"/><path d="M-25-19 V22 Q0 40 25 22 V-19"/>',
+ clock:'<circle r="29"/><path d="M0-20 V0 L14 9"/>',
+ heart:'<path d="M0 28 L-30-3 Q-33-30 0-17 Q33-30 30-3Z"/>',
+ bridge:'<path d="M-34 22 H34 M-24 22 V-16 M24 22 V-16 M-24-16 Q0 23 24-16"/>'
+ };
+ const aliases={
+ bamboo:'leaf',carrot:'leaf',dice:'crystal',vinyl:'drum',clay:'vase',easel:'painting',paint:'brush',loom:'book',rug:'painting',lipstick:'vase',sparkle:'star',kart:'bicycle',flag:'star',planet:'atom',popcorn:'cake',pasta:'ramen',steam:'spiral',fries:'burger',house:'tower',fan:'flower',sushi:'fish',pyramid:'fortress',mountain:'tree',chopsticks:'brush',egg:'cake',city:'tower',pho:'ramen',herbs:'leaf',plate:'cake',river:'bridge',bread:'cake',olives:'leaf',monk:'mask',beans:'coffee',drop:'heart',dripper:'cup',arch:'fortress',chandelier:'lamp',cocktail:'wine',camera:'film',orange:'sun',eggs:'cake',mimosa:'flower',lamp:'sun',eye:'spiral',chocolate:'cake',coil:'atom',gear:'atom',robot:'mask',silos:'tower',spray:'brush',abstract:'painting',frame:'painting',piano:'book',notes:'music',lantern:'lamp',market:'house',smile:'sun',waves:'river',bench:'chair',church:'fortress',lake:'river',cobblestone:'bridge',greenhouse:'house',confluence:'river',pine:'tree',deer:'tree',columns:'fortress',costume:'mask',portrait:'mask',shoes:'bicycle',guide:'mask',map:'book',tram:'bus',building:'tower',tunnel:'arch',torch:'sun',bus:'kart',skyscraper:'tower',speedboat:'boat',glasses:'mask',fork:'brush',snacks:'cake',vineyard:'leaf',sax:'guitar',stack:'book',dessert:'cake',syrniki:'cake',coffee:'cup',croissant:'cake',symbol:'star',butter:'cake',silos:'tower',hats:'hat',window:'house',dripper:'cup'
+ };
+ const motif=(id,x,y,scale)=>{
+ const key=primitives[id]?id:(aliases[id]||'flower'),shape=primitives[key]||primitives.flower;
+ return '<g transform="translate('+x+' '+y+') scale('+scale+')" stroke="'+palette[3]+'" fill="'+palette[1]+'" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">'+shape+'</g>'
+ };
+ return motif(left,81,142,.95)+motif(right,432,143,.72)
+}
+
 function knitArt(x){
  const name=x[0],type=x[1],desc=(x[3]+' '+x[4]).toLowerCase(),n=name.toLowerCase();
  let hash=2166136261;for(const c of name)hash=Math.imul(hash^c.charCodeAt(0),16777619)>>>0;
@@ -346,7 +406,7 @@ function knitArt(x){
  '<rect width="520" height="310" fill="'+cream+'"/><rect width="520" height="310" fill="url(#knit)"/>'+
  '<ellipse cx="260" cy="232" rx="188" ry="24" fill="'+ink+'" opacity=".13"/>'+
  '<ellipse cx="260" cy="157" rx="160" ry="120" fill="'+warm+'" opacity=".38"/>'+
- '<g filter="url(#yarn)">'+motifs[key]()+'</g>'+little+
+ '<g filter="url(#yarn)">'+motifs[key]()+'</g>'+bespokeStitches(x,p)+little+
  '<path d="M 40 253 Q 259 243 479 253" fill="none" stroke="'+main+'" stroke-width="3" stroke-dasharray="4 8"/>'+
  '<rect x="74" y="256" width="372" height="39" rx="12" fill="'+cream+'" fill-opacity=".95" stroke="'+main+'" stroke-width="1.5"/>'+
  '<text x="260" y="281" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="'+(short.length>23?16:19)+'" fill="'+ink+'">'+esc(short)+'</text>'+
