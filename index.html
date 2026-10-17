@@ -211,7 +211,7 @@ const allItems=items.concat(walkingHighlights,extraPlaces,surprisePlaces,events,
 
 const cats=[['all','Все места'],['events','Мероприятия'],['tours','Экскурсии'],['boats','Катера'],['museums','Музеи'],['food','Рестораны'],['coffee','Кофейни'],['walks','Прогулки'],['nature','Парки'],['games','Развлечения'],['creative','Мастер-классы'],['anime','Азия'],['design','Необычное']];
 const museums=new Set(['Muzej iluzija','Muzej čokolade','Muzej Nikole Tesle','Muzej nauke i tehnike','Muzej Jugoslavije','Muzej savremene umetnosti','Muzej afričke umetnosti','Национальный музей Сербии','Этнографический музей','Музей прикладного искусства','Дом цветов']);
-const fiveGroups=[['all','Все'],['dining','Еда и кофе'],['culture','Музеи'],['agenda','События'],['guided','Экскурсии'],['walking','Пешие прогулки'],['theatre','🎭 Театр'],['cinema','🎬 Кино'],['concerts','🎵 Концерты'],['exhibitions','🖼️ Выставки'],['festivals','🎪 Фестивали'],['workshops','🧵 Мастер-классы'],['leisure','Досуг']];
+const fiveGroups=[['all','✨ Все'],['dining','☕ Еда и кофе'],['culture','🏛️ Музеи'],['agenda','📅 События'],['guided','🧭 Экскурсии'],['walking','🌿 Пешие прогулки'],['theatre','🎭 Театр'],['cinema','🎬 Кино'],['concerts','🎵 Концерты'],['exhibitions','🖼️ Выставки'],['festivals','🎪 Фестивали'],['workshops','🧵 Мастер-классы'],['leisure','🎨 Досуг']];
 const groupTypes={dining:['food','coffee','anime'],culture:['museums'],agenda:['events'],guided:['tours','boats'],leisure:['games','creative','walks','nature','design']};
 let mainGroup='all',search='',savedOnly=false;
 let stored=[];try{stored=JSON.parse(localStorage.getItem('belgrade-saved-v1')||'[]')}catch(e){}
