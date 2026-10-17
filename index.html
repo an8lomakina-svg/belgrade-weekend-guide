@@ -286,14 +286,28 @@ function specialFilterMatch(x,id){const title=x[0],name=(x[0]+' '+x[3]).toLowerC
  return false}
 const auditedFoodTags={"Royal India — Обиличев венац":["indian"],"Maikhana — Врачар":["indian","vegan"],"Spice Indian Cuisine — Баново брдо":["indian","vegan"],"Zapata Pozo — Новый Белград":["mexican"],"Indian Punjabi Cuisine — центр":["indian"],
 "Bistro Mali Pijac":["french","serbian"],"Botako":["italian","pizza"],"Comunale Caffè e Cucina":["italian"],"Bela Reka":["serbian"],"Tri šešira":["serbian"],"Ambar":["serbian"],"Iva New Balkan Cuisine":["serbian"],"Konoha":["japanese"],"Taiyaki":["japanese","bakery"],"PUNCH RAMEN":["japanese"],"TrueRamen":["japanese"],"Urban Ramen":["japanese"],"Istok":["vietnamese"],"Angry Monk":["japanese"],"Pekara Trpković — Славия":["serbian","bakery","brunch"],"Mandarina Cake Shop":["bakery"],"Puter Fine Bistro":["bakery"],"Mimosa":["brunch"],"PASTIS Bistro":["brunch"],"Kofilin — Carice Milice":["brunch"],"Smokvica — Йованова":["brunch","bakery"],"Smokvica — Молерова":["brunch","bakery"],"Pizza Fabrika Vračar":["italian","pizza"],"Langouste — Косанчичев венац":["seafood","date","view"],"The Twenty Two — с панорамой":["view","date"],"Homa — Дорчол":["date"],"L’Adresse — ресторан Saint Ten":["date"],"Terasa Café — Rajićeva":["view"],"Toro Latin Gastro Bar — Савская набережная":["terrace"],"Dolcino Miljakovac":["brunch","pets"],"Verde Brunch & More — Дединье":["brunch","pets"],"Smokvica — Молерова":["brunch","bakery","terrace"],"Tamper Specialty Coffee & Brunch":["brunch"],"VERA — Keto Breakfast & Coffee":["brunch"]};
-function foodMatch(x,id){const n=(x[0]+' '+x[3]+' '+x[4]).toLowerCase();const isFood=groupTypes.dining.includes(x[1])||['Lorenzo & Kakalamba','Hard Rock Cafe'].includes(x[0]);if(!isFood)return false;if(id==='dining')return true;if((auditedFoodTags[x[0]]||[]).includes(id))return true;if(id==='coffeeonly')return x[1]==='coffee';if(id==='brunch'||id==='bakery')return specialFilterMatch(x,id);const cuisine={asian:/азиат|япон|рамен|суши|корей|китай|тайск|вьетнам|naruto|anime|ramen|sushi|konoha|punch|taiyaki|wok|asian/,french:/француз|франц|french|bistro fran|croissant|круассан/,italian:/итальян|italian|pizza|пицц|паста|pasta|trattoria|ristorante|gelato/,serbian:/сербск|балкан|традиционн|ćevap|cevap|плескавиц|roštilj|rostilj|kafana|бурек|burek/};if(id==='othercuisine')return !Object.values(cuisine).some(re=>re.test(n));return cuisine[id]?.test(n)||false}
+function foodMatch(x,id){const isFood=groupTypes.dining.includes(x[1])||['Lorenzo & Kakalamba','Hard Rock Cafe'].includes(x[0]);if(!isFood)return false;
+if(id==='dining')return true;
+if(id==='coffeeonly')return x[1]==='coffee';
+if(id==='brunch'||id==='bakery')return specialFilterMatch(x,id);
+const tags=auditedFoodTags[x[0]]||[];
+const specific={asian:['japanese','korean','chinese','thai','vietnamese'],othercuisine:[]};
+if(id==='asian')return specific.asian.some(tag=>tags.includes(tag))||x[1]==='anime'||/азиатск|японск|корейск|китайск|тайск|вьетнамск/.test(x[3].toLowerCase());
+if(id==='othercuisine')return !['french','italian','serbian','japanese','korean','chinese','thai','vietnamese','greek','georgian','indian','mexican','turkish','american','middleeast'].some(tag=>foodMatch(x,tag));
+if(tags.includes(id))return true;
+const label=x[3].toLowerCase();
+const explicitlyNamed={french:/французск/,italian:/итальянск/,serbian:/сербск|балканск/};
+return !!explicitlyNamed[id]?.test(label)}
 const foodCuisineInput=document.getElementById('foodCuisine'),foodFormatInput=document.getElementById('foodFormat'),foodVibeInput=document.getElementById('foodVibe');
 const cuisineTerms={japanese:/япон|рамен|суши|naruto|ramen|sushi|taiyaki|konoha/,korean:/корей|korean|kimchi/,chinese:/китайск|chinese|dim.sum|sichuan/,thai:/тайск|thai/,vietnamese:/вьетнам|vietnam|pho\b/,greek:/греческ|greek|gyros/,georgian:/грузинск|georgian|хинкали|хачапури/,indian:/индийск|indian|curry/,mexican:/мексикан|mexican|taco|burrito/,turkish:/турецк|turkish|doner|döner/,american:/американск|american|burger/,middleeast:/ближневосточ|ливанск|lebanese|falafel|hummus/};
 const foodTypeTerms={pizza:/пицц|pizza|pizzeria/,burgers:/бургер|burger/,grill:/гриль|steak|стейк|roštilj/,seafood:/рыбн|морепродукт|seafood|fish/,vegan:/веган|вегетариан|vegan|vegetarian/,wine:/винн.*бар|wine.bar/,cocktails:/коктейл|cocktail/,pub:/pub|паб|пивн|craft.beer/,icecream:/морожен|gelato|ice.cream/};
-function advancedFoodMatch(x){const food=groupTypes.dining.includes(x[1])||['Lorenzo & Kakalamba','Hard Rock Cafe'].includes(x[0]);if(!food)return false;const n=(x[0]+' '+x[3]+' '+x[4]).toLowerCase(),c=foodCuisineInput.value,f=foodFormatInput.value,v=foodVibeInput.value;
-if(c!=='all'&&!(auditedFoodTags[x[0]]||[]).includes(c)&&!(cuisineTerms[c]?.test(n)||foodMatch(x,c)))return false;
-if(f!=='all'&&!(auditedFoodTags[x[0]]||[]).includes(f)&&!(f==='coffeeonly'?x[1]==='coffee':f==='brunch'||f==='bakery'?specialFilterMatch(x,f):foodTypeTerms[f]?.test(n)))return false;
-if(v!=='all'){if(v==='pets'){if(!specialFilterMatch(x,'pets'))return false}else if(v==='budget'){const cost=costOf(x);if(cost===null||cost>1000)return false}else{const patterns={terrace:/террас|садик|дворик|garden|terrace/,view:/вид на|панорам|view|rooftop/,work:/для работы|ноутбук|cowork|laptop/,date:/для свидан|романтич|romantic/};if(!(auditedFoodTags[x[0]]||[]).includes(v)&&!patterns[v]?.test(n))return false}}
+function advancedFoodMatch(x){const food=groupTypes.dining.includes(x[1])||['Lorenzo & Kakalamba','Hard Rock Cafe'].includes(x[0]);if(!food)return false;
+const c=foodCuisineInput.value,f=foodFormatInput.value,v=foodVibeInput.value;
+const tags=auditedFoodTags[x[0]]||[];
+const category=x[3].toLowerCase();
+if(c!=='all'&&!foodMatch(x,c)&&!tags.includes(c)&&!(c==='asian'&&foodMatch(x,'asian'))&&!(c==='japanese'&&/японск/.test(category))&&!(c==='vietnamese'&&/вьетнамск/.test(category)))return false;
+if(f!=='all'&&!tags.includes(f)&&!(f==='coffeeonly'&&x[1]==='coffee')&&!(f==='brunch'||f==='bakery')&&!(f==='brunch'||f==='bakery'?specialFilterMatch(x,f):false)&&!(f==='pizza'&&/пицц/.test(category))&&!(f==='burgers'&&/бургер/.test(category))&&!(f==='vegan'&&/веган|вегетариан/.test(category)))return false;
+if(v!=='all'){if(v==='pets'){if(!specialFilterMatch(x,'pets'))return false}else if(v==='budget'){const cost=costOf(x);if(cost===null||cost>1000)return false}else if(!tags.includes(v))return false}
 return true}
 function foodFiltersActive(){return foodCuisineInput.value!=='all'||foodFormatInput.value!=='all'||foodVibeInput.value!=='all'}
 for(const el of [foodCuisineInput,foodFormatInput,foodVibeInput])el.addEventListener('change',()=>{mainGroup='dining';updateTabs();render()});
