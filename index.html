@@ -341,6 +341,69 @@ main{position:relative}
 }
 @media(prefers-reduced-motion:reduce){.card{transition:none!important}.card:hover{transform:none!important}}
 
+
+/* Gouache depth v2 — Belgrade landmark, pigment and brush texture */
+header{
+  min-height:286px;
+  background-image:
+    url('assets/illustrations/belgrade-pobednik-gouache.png'),
+    linear-gradient(108deg,#f0c571 0%,#ee927f 42%,#80aca0 100%)!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-size:min(40vw,500px) auto,cover!important;
+  background-position:calc(100% + 18px) 51%,center!important;
+}
+header:before{
+  width:58%!important;height:185%!important;left:-20%!important;top:-51%!important;
+  opacity:.55!important;
+  background:
+    radial-gradient(ellipse at 55% 50%,#cf526c 0 32%,transparent 33%),
+    repeating-linear-gradient(13deg,transparent 0 13px,#ffffff11 14px 17px,transparent 18px 28px)!important;
+  filter:blur(.35px)!important;
+}
+header:after{display:none!important}
+header h1,header p,.stats{max-width:min(59vw,665px)}
+header h1{
+  text-shadow:2px 2px 0 #ffefca75,-1px 1px 0 #fff9eeb5!important;
+  letter-spacing:-.065em!important;
+}
+header p{font-weight:650!important}
+header .stat{background:#fff9e8df!important}
+.find-panel,.resource-directory{
+  background-image:
+    linear-gradient(116deg,#fffdf8ed,#fff6e5ed),
+    repeating-linear-gradient(0deg,transparent 0 9px,#c78e6510 10px 11px)!important;
+}
+.find-panel:before,.resource-directory:before{
+  height:9px!important;
+  border-radius:43% 57% 62% 38%/54% 41% 59% 46%!important;
+  background:
+    repeating-linear-gradient(90deg,#e66362 0 18%,#f2c55c 19% 40%,#5e9e98 41% 69%,#71609c 70% 100%)!important;
+  box-shadow:0 2px 0 #9d5f4730!important;
+}
+.card{background-image:linear-gradient(145deg,#fffef9,#fff8ee 78%,#f3eadb)!important}
+.card .visual:before{
+  content:"";position:absolute;z-index:2;inset:0;pointer-events:none;opacity:.19;
+  background:
+    linear-gradient(17deg,transparent 0 22%,#fff7d844 23% 27%,transparent 28% 57%,#f96f6640 58% 61%,transparent 62%),
+    repeating-linear-gradient(14deg,transparent 0 13px,#fff 14px 15px,transparent 16px 26px);
+  mix-blend-mode:soft-light;
+}
+.card .visual .heart,.card .visual .tag,.card .visual .photo-entry{z-index:4!important}
+.links a,.links a.secondary,.find-tab,.filter,.find-reset,.reset-filters{
+  background-image:linear-gradient(142deg,#fffdf4,#f5e8d5)!important;
+}
+.links a:first-child,.find-tab.active,.filter.active{
+  background-image:linear-gradient(135deg,#4a857a,#347066)!important;
+}
+@media(max-width:760px){
+  header{min-height:270px;background-size:285px auto,cover!important;background-position:calc(100% + 42px) 96%,center!important}
+  header h1,header p,.stats{max-width:79vw}
+}
+@media(max-width:460px){
+  header{background-size:230px auto,cover!important;background-position:calc(100% + 65px) 104%,center!important}
+  header h1,header p,.stats{max-width:88vw}
+}
+
 </style></head><body><header><h1>Белград.<br><span>Открывай город.</span></h1><p>Места и события, которые стоит открыть.</p><div class="stats"><div class="stat" id="totalStat">Места и события</div></div></header><main><section class="find-panel" id="detailedFilters" aria-label="Поиск и фильтры">
 <div class="find-top"><div><span class="find-eyebrow">ВАШ БЕЛГРАД</span><h2>Что интересного?</h2></div><button id="resetFilters" type="button" class="find-reset">Сбросить</button></div>
 <div class="find-search"><span aria-hidden="true">⌕</span><input id="primarySearch" type="search" placeholder="Название, кухня, музей, место…" aria-label="Поиск по каталогу"></div>
