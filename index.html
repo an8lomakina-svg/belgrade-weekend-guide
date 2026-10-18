@@ -419,7 +419,142 @@ header{
   header{min-height:290px!important;background-size:auto 238px,cover!important;background-position:calc(100% + 5px) calc(100% - 3px),center!important}
 }
 
-</style></head><body><header><h1>Белград.<br><span>Открывай город.</span></h1><p>Места и события, которые стоит открыть.</p><div class="stats"><div class="stat" id="totalStat">Места и события</div></div></header><main><section class="find-panel" id="detailedFilters" aria-label="Поиск и фильтры">
+
+/* Editorial gouache system — calm paper, ink and one deliberate accent */
+:root{
+  --ink:#202b34;
+  --purple:#7d3546;
+  --pink:#d09a88;
+  --muted:#65726f;
+  --paper:#f8f3ea;
+  --paper-deep:#ede3d4;
+  --paint-teal:#718e8c;
+  --paint-coral:#be786d;
+  --paint-yellow:#d8a658;
+  --paint-violet:#7a6577;
+}
+html,body{background:#f7f2e9!important}
+body{
+  background:
+    linear-gradient(90deg,#f7f2e9e8,#f7f2e9e8),
+    repeating-linear-gradient(0deg,transparent 0 4px,#8c72530b 5px 6px)!important;
+  color:var(--ink)!important;
+}
+body:before,body:after{display:none!important}
+header{
+  min-height:405px!important;
+  background-image:
+    linear-gradient(90deg,#f6efe2 0%,#f6efe2e8 35%,#f6efe28a 57%,#f6efe20a 77%),
+    url('assets/illustrations/belgrade-kalemegdan-panorama-gouache.png')!important;
+  background-size:cover,cover!important;
+  background-position:center,center!important;
+  box-shadow:inset 0 -1px 0 #80534440!important;
+}
+header:before,header:after{display:none!important}
+header h1,header p,.stats{max-width:56vw!important}
+header h1{
+  font-family:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif!important;
+  font-size:clamp(55px,6vw,82px)!important;
+  font-weight:600!important;
+  line-height:.82!important;
+  letter-spacing:-.065em!important;
+  color:#202b34!important;
+  text-shadow:none!important;
+}
+header h1 span{color:#86394b!important}
+header p{
+  margin-top:20px!important;
+  color:#586462!important;
+  font-size:14px!important;
+  font-weight:600!important;
+}
+.stat{
+  margin-top:8px!important;
+  border:1px solid #8b5b524f!important;
+  border-radius:3px!important;
+  background:#fbf6eddf!important;
+  box-shadow:none!important;
+  color:#68413f!important;
+}
+.find-panel,.smart-filters,.resource-directory,.notice,.update-banner{
+  border:1px solid #9b79513e!important;
+  border-radius:4px!important;
+  background:#fffcf5f0!important;
+  box-shadow:0 16px 34px #47351a0d!important;
+}
+.find-panel:before,.resource-directory:before{
+  height:3px!important;
+  margin:0 0 20px!important;
+  border-radius:0!important;
+  background:linear-gradient(90deg,#813747 0 18%,#d29c59 38%,#b9c7b6 67%,transparent 92%)!important;
+  box-shadow:none!important;
+}
+.find-top h2,.find-eyebrow,.food-filter-heading,.other-filter-heading{color:#24313a!important}
+.find-eyebrow{color:#873b4b!important;font-size:10px!important;letter-spacing:.16em!important}
+.find-search,.builder-single input,.builder-single select,.builder-field select,.city-inline-select>select,.food-advanced select{
+  border:1px solid #9d8d764c!important;
+  border-radius:3px!important;
+  background:#fffdf8!important;
+  box-shadow:none!important;
+}
+.find-reset,.reset-filters{
+  border:1px solid #813747!important;
+  border-radius:3px!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#813747!important;
+}
+.find-reset:hover,.reset-filters:hover{background:#813747!important;color:#fffaf0!important}
+.builder-drawer,.builder-trio>.builder-drawer{
+  border:1px solid #9d8d7640!important;
+  border-radius:3px!important;
+  background:#fffdf8ad!important;
+  box-shadow:none!important;
+}
+.find-tab,.filter{
+  border:1px solid #a08e763d!important;
+  border-radius:3px!important;
+  background:#fffdf8!important;
+  box-shadow:none!important;
+}
+.find-tab.active,.filter.active{
+  background:#813747!important;
+  border-color:#813747!important;
+  box-shadow:none!important;
+}
+.grid{gap:20px!important}
+.card{
+  border:1px solid #9d8d763b!important;
+  border-radius:4px!important;
+  background:#fffdf8!important;
+  box-shadow:0 12px 26px #47351a10!important;
+}
+.card:nth-child(3n+2),.card:nth-child(4n){border-radius:4px!important;border-color:#9d8d763b!important}
+.card:hover{transform:translateY(-3px)!important;box-shadow:0 17px 32px #47351a19!important}
+.card .visual:before{opacity:.1!important}
+.body{background:#fffdf8!important}
+.body h3{
+  font-family:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif!important;
+  color:#26343c!important;
+  font-size:23px!important;
+  font-weight:650!important;
+  letter-spacing:-.025em!important;
+}
+.desc,.meta{color:#5f6b68!important}
+.tag,.card .visual .tag,.heart,.links a,.links a.secondary{
+  border-radius:3px!important;
+  box-shadow:none!important;
+}
+.links a,.links a.secondary{border:1px solid #7b9a8a42!important;background:#eff2eb!important}
+.links a:first-child{border-color:#496f68!important;background:#496f68!important}
+.notice,.update-banner{color:#5f6b68!important}
+@media(max-width:760px){
+  header{min-height:360px!important;background-position:62% center!important}
+  header h1,header p,.stats{max-width:82vw!important}
+  header h1{font-size:clamp(49px,13vw,67px)!important}
+}
+
+</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet"></head><body><header><h1>Белград.<br><span>Открывай город.</span></h1><p>Места и события, которые стоит открыть.</p><div class="stats"><div class="stat" id="totalStat">Места и события</div></div></header><main><section class="find-panel" id="detailedFilters" aria-label="Поиск и фильтры">
 <div class="find-top"><div><span class="find-eyebrow">ВАШ БЕЛГРАД</span><h2>Что интересного?</h2></div><button id="resetFilters" type="button" class="find-reset">Сбросить</button></div>
 <div class="find-search"><span aria-hidden="true">⌕</span><input id="primarySearch" type="search" placeholder="Название, кухня, музей, место…" aria-label="Поиск по каталогу"></div>
 
