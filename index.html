@@ -404,6 +404,21 @@ header .stat{background:#fff9e8df!important}
   header h1,header p,.stats{max-width:88vw}
 }
 
+
+/* Keep the complete Pobednik monument visible in the hero */
+header{
+  min-height:360px!important;
+  box-sizing:border-box!important;
+  background-size:auto 350px,cover!important;
+  background-position:calc(100% - 44px) calc(100% - 4px),center!important;
+}
+@media(max-width:760px){
+  header{min-height:310px!important;background-size:auto 285px,cover!important;background-position:calc(100% - 18px) calc(100% - 3px),center!important}
+}
+@media(max-width:460px){
+  header{min-height:290px!important;background-size:auto 238px,cover!important;background-position:calc(100% + 5px) calc(100% - 3px),center!important}
+}
+
 </style></head><body><header><h1>Белград.<br><span>Открывай город.</span></h1><p>Места и события, которые стоит открыть.</p><div class="stats"><div class="stat" id="totalStat">Места и события</div></div></header><main><section class="find-panel" id="detailedFilters" aria-label="Поиск и фильтры">
 <div class="find-top"><div><span class="find-eyebrow">ВАШ БЕЛГРАД</span><h2>Что интересного?</h2></div><button id="resetFilters" type="button" class="find-reset">Сбросить</button></div>
 <div class="find-search"><span aria-hidden="true">⌕</span><input id="primarySearch" type="search" placeholder="Название, кухня, музей, место…" aria-label="Поиск по каталогу"></div>
