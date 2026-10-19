@@ -1170,7 +1170,7 @@ function venueRatingLine(x){
  const rating=venueRating(x);if(!rating)return null;
  const line=document.createElement('div');line.className='venue-rating';
  const link=document.createElement('a');link.href=rating.source;link.target='_blank';link.rel='noopener noreferrer';
- link.textContent='★ '+rating.rating.toFixed(1)+' · '+new Intl.NumberFormat('ru-RU').format(rating.reviewCount)+' отзывов';
+ link.textContent='Рейтинг пользователей · ★ '+rating.rating.toFixed(1)+' · '+new Intl.NumberFormat('ru-RU').format(rating.reviewCount)+' отзывов';
  link.title='Оценка и число отзывов могут меняться';line.appendChild(link);return line;
 }
 function visitorRecommendation(x){return visitorRecommendations[x[0]]||''}
