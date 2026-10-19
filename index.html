@@ -795,7 +795,7 @@ function renderLiveAgenda(){
   title.className='live-agenda-item-title';title.textContent=x[0].replace(/, \d+ октября$/,'');
   meta.className='live-agenda-item-meta';const time=(x[3].match(/\b\d{1,2}:\d{2}\b/)||[])[0];meta.textContent=(time?time+' · ':'')+(checkedPlaces[x[0]]?.address||x[6]);
   copy.append(title,meta);item.append(status,copy);
-  item.onclick=()=>{dialog.close();openDetail(x)};root.appendChild(item);
+  item.onclick=()=>{dialog.close();openDetails(x)};root.appendChild(item);
  }
 }
 const liveAgendaDialog=document.getElementById('liveAgendaDialog');
