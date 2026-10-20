@@ -782,7 +782,7 @@ function renderAgenda(){
  const entries=allItems.filter(x=>x[1]==='events'&&x[8]&&eventStartDates[x[0]]&&agendaDate>=eventStartDates[x[0]]&&agendaDate<=x[8]&&!isClosed(x)).sort((a,b)=>{const ta=(a[3].match(/\b\d{1,2}:\d{2}\b/)||['99:99'])[0],tb=(b[3].match(/\b\d{1,2}:\d{2}\b/)||['99:99'])[0];return ta.localeCompare(tb)||a[0].localeCompare(b[0],'ru')});
  const upcomingRoot=document.getElementById('agendaUpcoming');
  if(upcomingRoot){
-  const upcoming=allItems.filter(x=>x[1]==='events'&&x[8]&&eventStartDates[x[0]]&&x[8]>=today).sort((a,b)=>{const activeA=eventStartDates[a[0]]<=today?0:1,activeB=eventStartDates[b[0]]<=today?0:1;return activeA-activeB||eventStartDates[a[0]].localeCompare(eventStartDates[b[0]])||a[0].localeCompare(b[0],'ru')}).slice(0,6);
+  const upcoming=allItems.filter(x=>x[1]==='events'&&x[8]&&eventStartDates[x[0]]&&x[8]>=today).sort((a,b)=>{const activeA=eventStartDates[a[0]]<=today?0:1,activeB=eventStartDates[b[0]]<=today?0:1;return activeA-activeB||eventStartDates[a[0]].localeCompare(eventStartDates[b[0]])||a[0].localeCompare(b[0],'ru')}).slice(0,10);
   upcomingRoot.replaceChildren();
   const caption=document.createElement('p');caption.className='agenda-upcoming-label';caption.textContent='Ближайшие подтверждённые события';upcomingRoot.appendChild(caption);
   for(const x of upcoming){
