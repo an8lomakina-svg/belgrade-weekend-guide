@@ -146,3 +146,4 @@
 
 У части из 65 записей дата проверки URL пока не зафиксирована. Сначала проверять официальные площадки, билетные сервисы и источники ближайших событий; затем каталоги и сообщества.
 | SRC-102 | Фото / Белград | открытая лицензия | Wikimedia Commons — Tri šešira | https://commons.wikimedia.org/wiki/File:Skadarlija,_restoran_%22Tri_%C5%A1e%C5%A1ira%22_01.jpg | Фото фасада ресторана Tri šešira в Скадарлии; автор Ljiljana Sundać, CC BY 4.0 | 2026-10-20 | доступен; точное место и лицензия подтверждены, но прямой файл не загрузился в карточке — не используется |
+| SRC-103 | Еда / Белград | первичный или организатор | Galerija Beograd — Taiyaki | https://www.galerijabelgrade.com/sr/dine/taiyaki-belgrade | Официальная страница арендатора Taiyaki в Galerija Beograd | 2026-10-20 | доступен; подтверждает заведение как часть Galerija Beograd |
