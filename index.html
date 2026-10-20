@@ -590,6 +590,57 @@ details.food-filter-section[open] .food-filter-action::after,details.city-filter
 /* Card save control: consistent inset and a centred heart at every viewport. */
 .card .visual{position:relative!important}.card .visual .heart{position:absolute!important;inset:16px 16px auto auto!important;box-sizing:border-box!important;display:grid!important;place-items:center!important;line-height:1!important;margin:0!important;padding:0!important;transform:none!important}
 @media(max-width:620px){.card .visual .heart{width:44px!important;height:44px!important;min-width:44px!important}}
+
+/* Compact filter rows: one readable line, stable state and chevron. */
+#detailedFilters :is(.food-filter-section,.city-filter-section,.more-filter-section){
+  margin:6px 0!important;
+  border-color:#dbe5dc!important;
+}
+#detailedFilters details.food-filter-section>summary.food-filter-heading,
+#detailedFilters details.city-filter-section>summary.city-filter-heading,
+#detailedFilters .more-filter-section>summary{
+  position:relative!important;
+  justify-content:flex-start!important;
+  min-height:42px!important;
+  box-sizing:border-box!important;
+  padding:9px 42px 9px 13px!important;
+  gap:0!important;
+}
+#detailedFilters .food-filter-copy strong,
+#detailedFilters .city-filter-heading>span:first-child,
+#detailedFilters .more-filter-section>summary>span{
+  font-size:13px!important;
+  line-height:1.2!important;
+}
+#detailedFilters .food-filter-action,
+#detailedFilters #cityFilterState,
+#detailedFilters .more-filter-section summary small{
+  display:inline-flex!important;
+  align-items:center!important;
+  margin:0 0 0 10px!important;
+  color:#718277!important;
+  font-size:11px!important;
+  line-height:1.2!important;
+}
+#detailedFilters .food-filter-action::after{display:none!important}
+#detailedFilters details.food-filter-section>summary.food-filter-heading::after,
+#detailedFilters details.city-filter-section>summary.city-filter-heading::after,
+#detailedFilters .more-filter-section>summary::after{
+  content:'⌄'!important;
+  display:block!important;
+  position:absolute!important;
+  right:14px!important;
+  top:50%!important;
+  margin:0!important;
+  transform:translateY(-50%)!important;
+  font-size:15px!important;
+  line-height:1!important;
+}
+#detailedFilters details.food-filter-section[open]>summary.food-filter-heading::after,
+#detailedFilters details.city-filter-section[open]>summary.city-filter-heading::after,
+#detailedFilters .more-filter-section[open]>summary::after{
+  transform:translateY(-50%) rotate(180deg)!important;
+}
 </style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet"></head><body><header><h1>Белград.<br><span>Открывай город.</span></h1><p>Места и события, которые стоит открыть.</p><div class="stats"><div class="stat" id="totalStat">Места и события</div></div><nav class="hero-quick-actions" id="heroQuickActions" aria-label="Быстрый выбор"><span class="hero-quick-label">Выбрать за минуту</span><button type="button" data-scenario="today">Сегодня</button><button type="button" data-scenario="evening">На вечер</button><button type="button" data-scenario="food">Поесть</button><button type="button" data-scenario="free">Бесплатно</button></nav></header><main><section class="find-panel" id="detailedFilters" aria-label="Поиск и фильтры">
 <div class="find-top"><div><h2>Найти место</h2></div><button id="resetFilters" type="button" class="find-reset">Сбросить</button></div>
 <div class="find-search"><span aria-hidden="true">⌕</span><input id="primarySearch" type="search" placeholder="Название, кухня, музей, место…" aria-label="Поиск по каталогу"></div>
