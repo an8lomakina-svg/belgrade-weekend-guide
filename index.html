@@ -909,7 +909,7 @@ function matchExtra(x){
  return true
 }
 function sortedList(arr){const sort=extra('sort');if(sort==='name')arr.sort((a,b)=>a[0].localeCompare(b[0],'ru'));if(sort==='date')arr.sort((a,b)=>(a[8]||'9999').localeCompare(b[8]||'9999'));return arr}
-function reset(){mainGroup='all';visitDate.value='';visitPeriod.value='all';visitArea.value='all';primarySearch.value='';search='';savedOnly=false;fav.classList.remove('active');fav.textContent='♡ Избранное';fav.setAttribute('aria-pressed','false');for(const x of Object.values(extras)){x.select.value='all';x.wrap.hidden=true;x.option.hidden=false}addMenu.hidden=true;updateTabs();render()}
+function reset(){mainGroup='all';foodCuisineInput.value='all';foodFormatInput.value='all';foodVibeInput.value='all';visitDate.value='';visitPeriod.value='all';visitArea.value='all';primarySearch.value='';search='';savedOnly=false;fav.classList.remove('active');fav.textContent='♡ Избранное';fav.setAttribute('aria-pressed','false');for(const x of Object.values(extras)){x.select.value='all';x.wrap.hidden=true;x.option.hidden=false}addMenu.hidden=true;updateTabs();render()}
 document.getElementById('resetFilters').onclick=reset;
 primarySearch.oninput=()=>{search=primarySearch.value.trim().toLowerCase();render()};
 for(const c of [visitDate,visitPeriod,visitArea])c.addEventListener('change',render);
