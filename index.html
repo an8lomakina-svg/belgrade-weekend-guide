@@ -905,16 +905,19 @@ function renderAgenda(){
  root.replaceChildren();
  if(showUpcoming){
   const weekEnd=new Date(today+'T12:00:00');weekEnd.setDate(weekEnd.getDate()+6);const weekEndValue=weekEnd.toLocaleDateString('en-CA');
-  const monthEnd=new Date(today+'T12:00:00');monthEnd.setMonth(monthEnd.getMonth()+1,0);const monthEndValue=monthEnd.toLocaleDateString('en-CA');
+  const thirtyDays=new Date(today+'T12:00:00');thirtyDays.setDate(thirtyDays.getDate()+30);const thirtyDaysValue=thirtyDays.toLocaleDateString('en-CA');
+  const sixMonths=new Date(today+'T12:00:00');sixMonths.setMonth(sixMonths.getMonth()+6);const sixMonthsValue=sixMonths.toLocaleDateString('en-CA');
   const live=upcoming.filter(x=>eventStartDates[x[0]]<=today);
   const week=upcoming.filter(x=>eventStartDates[x[0]]>today&&eventStartDates[x[0]]<=weekEndValue);
-  const later=upcoming.filter(x=>eventStartDates[x[0]]>weekEndValue&&eventStartDates[x[0]]<=monthEndValue);
-  dayLabel.textContent='Подтверждённые события без повторов длительных программ.';
+  const month=upcoming.filter(x=>eventStartDates[x[0]]>weekEndValue&&eventStartDates[x[0]]<=thirtyDaysValue);
+  const advance=upcoming.filter(x=>eventStartDates[x[0]]>thirtyDaysValue&&eventStartDates[x[0]]<=sixMonthsValue).slice(0,12);
+  dayLabel.textContent='Подтверждённые события: ближайшие даты и планы заранее.';
   const startDate=x=>new Date((eventStartDates[x[0]]<=today?today:eventStartDates[x[0]])+'T12:00:00');
   appendAgendaGroup(root,'Идёт сейчас',live,()=>new Date(today+'T12:00:00'));
   appendAgendaGroup(root,'Ближайшие 7 дней',week,startDate);
-  appendAgendaGroup(root,'Дальше в этом месяце',later,startDate);
-  if(!live.length&&!week.length&&!later.length){const empty=document.createElement('p');empty.className='agenda-empty';empty.textContent='В этом месяце подтверждённых событий пока нет.';root.appendChild(empty)}
+  appendAgendaGroup(root,'Следующие 30 дней',month,startDate);
+  appendAgendaGroup(root,'Планируйте заранее',advance,startDate);
+  if(!live.length&&!week.length&&!month.length&&!advance.length){const empty=document.createElement('p');empty.className='agenda-empty';empty.textContent='В ближайшие шесть месяцев подтверждённых событий пока нет.';root.appendChild(empty)}
  }else{
   dayLabel.textContent='События на '+selectedLabel;
   if(!availableOnDate.length){const empty=document.createElement('p');empty.className='agenda-empty';empty.textContent='На этот день подтверждённых событий пока нет. Выберите другую дату или откройте все события.';root.appendChild(empty)}
