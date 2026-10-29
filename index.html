@@ -914,12 +914,12 @@ function renderAgenda(){
   const weekEnd=new Date(today+'T12:00:00');weekEnd.setDate(weekEnd.getDate()+6);const weekEndValue=weekEnd.toLocaleDateString('en-CA');
   const thirtyDays=new Date(today+'T12:00:00');thirtyDays.setDate(thirtyDays.getDate()+30);const thirtyDaysValue=thirtyDays.toLocaleDateString('en-CA');
   const sixMonths=new Date(today+'T12:00:00');sixMonths.setMonth(sixMonths.getMonth()+6);const sixMonthsValue=sixMonths.toLocaleDateString('en-CA');
-  const live=upcoming.filter(x=>eventStartDates[x[0]]<=today);
-  const week=upcoming.filter(x=>eventStartDates[x[0]]>today&&eventStartDates[x[0]]<=weekEndValue);
-  const month=upcoming.filter(x=>eventStartDates[x[0]]>weekEndValue&&eventStartDates[x[0]]<=thirtyDaysValue);
-  const advance=upcoming.filter(x=>eventStartDates[x[0]]>thirtyDaysValue&&eventStartDates[x[0]]<=sixMonthsValue).slice(0,12);
+  const live=upcoming.filter(x=>(eventStartDates[x[0]]||x[8])<=today);
+  const week=upcoming.filter(x=>(eventStartDates[x[0]]||x[8])>today&&(eventStartDates[x[0]]||x[8])<=weekEndValue);
+  const month=upcoming.filter(x=>(eventStartDates[x[0]]||x[8])>weekEndValue&&(eventStartDates[x[0]]||x[8])<=thirtyDaysValue);
+  const advance=upcoming.filter(x=>(eventStartDates[x[0]]||x[8])>thirtyDaysValue&&(eventStartDates[x[0]]||x[8])<=sixMonthsValue).slice(0,12);
   dayLabel.textContent='Подтверждённые события: ближайшие даты и планы заранее.';
-  const startDate=x=>new Date((eventStartDates[x[0]]<=today?today:eventStartDates[x[0]])+'T12:00:00');
+  const startDate=x=>{const start=eventStartDates[x[0]]||x[8];return new Date((start<=today?today:start)+'T12:00:00')};
   appendAgendaGroup(root,'Идёт сейчас',live,()=>new Date(today+'T12:00:00'));
   appendAgendaGroup(root,'Ближайшие 7 дней',week,startDate);
   appendAgendaGroup(root,'Следующие 30 дней',month,startDate);
