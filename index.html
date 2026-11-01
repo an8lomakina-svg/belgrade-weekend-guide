@@ -998,7 +998,8 @@ function matchExtra(x){
  const d=extra('day');if(d!=='all'&&visitDate.value){const wd=new Date(visitDate.value+'T12:00:00').getDay();if((d==='weekend')!==(wd===0||wd===6))return false}else if(d!=='all'&&x[9]&&d!==x[9])return false;
  const duration=extra('duration');if(duration!=='all'){const h=({'Голубац и Железные ворота':12,'Экскурсия в Нови-Сад и Сремски-Карловци':8,'Частный двухчасовой круиз':2,'Закатный круиз с гидом':1.5,'Круиз по Саве и Дунаю с гидом':1.5,'Исторический центр — пешая экскурсия':2.5,'Подземный Белград':3})[x[0]];if(h===undefined||!(duration==='short'?h<=2:duration==='medium'?h>2&&h<=4:h>4))return false}
  const showing=extra('show');if((showing==='photo'||showing==='photoWebsite')&&!Boolean(commonsPhotos[x[0]]||photos[x[0]]))return false;
- if((showing==='website'||showing==='photoWebsite')&&!x[7])return false;
+ const hasOfficialWebsite=Boolean(x[7]||directAuditedSites[x[0]]||(checkedPlaces[x[0]]?.kind==='official'&&checkedPlaces[x[0]]?.source));
+ if((showing==='website'||showing==='photoWebsite')&&!hasOfficialWebsite)return false;
  return true
 }
 function sortedList(arr){const sort=document.getElementById('resultSort')?.value||'all';if(sort==='name')arr.sort((a,b)=>a[0].localeCompare(b[0],'ru'));if(sort==='date')arr.sort((a,b)=>(a[8]||'9999').localeCompare(b[8]||'9999'));return arr}
