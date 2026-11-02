@@ -1395,6 +1395,12 @@ for(const card of allItems.filter(x=>x[1]==='events')){
  registerEvent(card,{start:eventStartDates[card[0]]||card[8],end:card[8],hours:freshEventHours[card[0]]||null,map:directMaps[card[0]]||null});
 }
 function eventInfo(card){return card?.[1]==='events'?eventRegistry.get(card[0])||null:null;}
+
+// 2026-11-02 · Sava Centar: подтверждено площадкой и официальным билетом.
+addEventCard({title:"Halid Muslimović — Mene je učilo vrijeme",emoji:"🎤",type:"Концерт · 12 ноября 2026 · 20:00",description:"Гала-концерт Halid Muslimović с программой «Mene je učilo vrijeme — ponovo zajedno» в Плавой зале Sava Centar.",price:"Билеты от 2 500 RSD",address:"Sava Centar — Plava dvorana, Milentija Popovića 9, Beograd",url:"https://tickets.rs/event/halid_muslimovic_27437",start:"2026-11-12",hours:"12 ноября · 20:00 · Sava Centar, Plava dvorana",map:"https://www.google.com/maps/dir/?api=1&destination=Milentija%20Popovi%C4%87a%209%2C%20Beograd"});
+addEventCard({title:"Nikola Rokvić — Susret",emoji:"🎤",type:"Концерт · 13 ноября 2026 · 20:00",description:"Первый большой сольный концерт Николы Роквича после 20 лет на сцене; программа «Susret» — в Плавой зале Sava Centar.",price:"Билеты от 2 500 RSD",address:"Sava Centar — Plava dvorana, Milentija Popovića 9, Beograd",url:"https://tickets.rs/tour/nikola_rokvic_2773",start:"2026-11-13",hours:"13 ноября · 20:00 · Sava Centar, Plava dvorana",map:"https://www.google.com/maps/dir/?api=1&destination=Milentija%20Popovi%C4%87a%209%2C%20Beograd"});
+addEventCard({title:"Rock Symphony",emoji:"🎸",type:"Концерт · 25 ноября 2026 · 20:00",description:"Рок-хиты в симфоническом звучании: на сцене оркестр, хор и вокалист Roni Romero.",price:"Билеты от 4 500 RSD",address:"Sava Centar — Plava dvorana, Milentija Popovića 9, Beograd",url:"https://tickets.rs/event/rock_simphony_26086",start:"2026-11-25",hours:"25 ноября · 20:00 · Sava Centar, Plava dvorana",map:"https://www.google.com/maps/dir/?api=1&destination=Milentija%20Popovi%C4%87a%209%2C%20Beograd"});
+
 const eventCatalogIssues=Object.freeze([...eventRegistry.values()].filter(info=>!info.start||!info.end||!info.card[7]));
 if(eventCatalogIssues.length)console.error('Неполные события в реестре',eventCatalogIssues.map(info=>info.card[0]));
 function openDetails(x){
