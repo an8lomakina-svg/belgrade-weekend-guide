@@ -1391,8 +1391,16 @@ function addEventCard({title,emoji='📅',type='Событие',description,pric
  const card=[title,'events',emoji,type,description,price,address,url,end,period];
  return registerEvent(card,{start,end,hours:hours?[hours,url]:null,map});
 }
+/*
+ Старые карточки без структурированного диапазона остаются в каталоге как
+ архивные/постоянные записи, но не притворяются подтверждёнными событиями
+ «Повестки дня». Они не могут остановить загрузку всего гида.
+*/
+const legacyUnscheduledEvents=[];
 for(const card of allItems.filter(x=>x[1]==='events')){
- registerEvent(card,{start:eventStartDates[card[0]]||card[8],end:card[8],hours:freshEventHours[card[0]]||null,map:directMaps[card[0]]||null});
+ const start=eventStartDates[card[0]]||card[8],end=card[8];
+ if(!start||!end){legacyUnscheduledEvents.push(card[0]);continue;}
+ registerEvent(card,{start,end,hours:freshEventHours[card[0]]||null,map:directMaps[card[0]]||null});
 }
 function eventInfo(card){return card?.[1]==='events'?eventRegistry.get(card[0])||null:null;}
 function eventOccursOn(card,date){
@@ -1427,7 +1435,7 @@ addEventCard({title:"Nikola Rokvić — Susret",emoji:"🎤",type:"Концер�
 addEventCard({title:"Rock Symphony",emoji:"🎸",type:"Концерт · 25 ноября 2026 · 20:00",description:"Рок-хиты в симфоническом звучании: на сцене оркестр, хор и вокалист Roni Romero.",price:"Билеты от 4 500 RSD",address:"Sava Centar — Plava dvorana, Milentija Popovića 9, Beograd",url:"https://tickets.rs/event/rock_simphony_26086",start:"2026-11-25",hours:"25 ноября · 20:00 · Sava Centar, Plava dvorana",map:"https://www.google.com/maps/dir/?api=1&destination=Milentija%20Popovi%C4%87a%209%2C%20Beograd"});
 
 const eventCatalogIssues=verifyEventCatalog();
-window.__eventCatalogChecks=Object.freeze({passed:eventCatalogIssues.length===0,issues:eventCatalogIssues});
+window.__eventCatalogChecks=Object.freeze({passed:eventCatalogIssues.length===0,issues:eventCatalogIssues,legacyUnscheduled:legacyUnscheduledEvents});
 if(eventCatalogIssues.length)throw new Error('Проверка афиши не пройдена: '+eventCatalogIssues.join('; '));
 function openDetails(x){
  const dialog=document.getElementById('detailDialog'),content=document.getElementById('detailContent');if(!dialog||!content)return;
