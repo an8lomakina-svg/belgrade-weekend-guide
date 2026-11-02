@@ -1,3 +1,10 @@
+## 2026-11-02 16:52 — mts Dvorana: ближайшие концерты и шоу
+
+- Полностью просмотрена официальная афиша mts Dvorana; по отдельным карточкам события подтверждены дата, время, Sala 1, стоимость и билетный переход.
+- Добавлены 8 карточек: Ivan Kukić & Sound Therapy, Romeo i Julija — Barcelona Flamenco Ballet, Bilja Krstić i Bistrik Orkestar, Los Vivancos, Zorana Pavić i Old Hat Orchestra, Narodni orkestar RTS, Kaliopi — Unplugged и Новогодняя Rock Opera.
+- Дубли с каталогом проверены по названию и дате: не найдены. Карточки созданы только через `addEventCard()`, поэтому автоматически попадают в каталог, фильтры и «Повестку дня».
+- Обновлён SRC-030; опубликованную выдачу проверить после GitHub Pages.
+
 ## 2026-11-02 14:30 — опубликованная проверка реестра событий
 
 - GitHub Pages успешно собрал и опубликовал изменения (run 41451356756).
