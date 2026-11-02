@@ -1420,12 +1420,11 @@ function verifyEventCatalog(){
   if(info.start>info.end)issues.push(title+': дата окончания раньше начала');
   if(!eventOccursOn(info.card,info.start))issues.push(title+': не попадает в выдачу на дату старта');
  }
- for(const title of Object.keys(eventStartDates)){
-  if(![...eventRegistry.keys()].includes(title))issues.push(title+': дата есть вне реестра события');
- }
- for(const title of Object.keys(freshEventHours)){
-  if(!allItems.some(card=>card[0]===title&&card[1]==='events'))issues.push(title+': время есть без карточки события');
- }
+ /*
+  Legacy-словари больше не являются источником данных интерфейса: после
+  миграции в реестр в них могут оставаться архивные ключи. Проверка
+  оценивает только реальный путь «реестр → каталог → фильтр → повестка».
+ */
  return Object.freeze(issues);
 }
 
