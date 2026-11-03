@@ -1453,6 +1453,9 @@ addEventCard({title:"«Transformacija» — Milena Obradović",emoji:"👜",type
 addEventCard({title:"«Možeš sve da vidiš» — фильм",emoji:"🎬",type:"Кино · документальный фильм",description:"Документальный фильм о последних 34 днях перед заключением Элизабет Холмс: она разрешает съёмочной группе наблюдать за своей жизнью.",price:"Билет и свободные места — на странице сеанса",address:"mts Dvorana, Dečanska 14, Beograd",url:"https://mtsdvorana.rs/film/mozes-sve-da-vidis",start:"2026-11-11",end:"2026-11-11",period:"evening",hours:"11 ноября · 20:00–23:09 (sala 6) · 20:15–23:24 (sala 2) · 20:30–23:39 (sala 3) · 2D с субтитрами",map:"https://www.google.com/maps/dir/?api=1&destination=De%C4%8Danska%2014%2C%20Beograd"});
 addEventCard({title:"«Briga puna ljubavi» — фильм",emoji:"🎬",type:"Кино · драма",description:"Драма Майка Ли о сотруднице службы защиты детей, которая возвращается жить к подруге-соцработнице.",price:"Билет и свободные места — на странице сеанса",address:"mts Dvorana, Dečanska 14, Beograd",url:"https://mtsdvorana.rs/film/briga-puna-ljubavi",start:"2026-11-25",end:"2026-11-25",period:"evening",hours:"25 ноября · 19:00–21:02 · sala 1 · 2D с субтитрами",map:"https://www.google.com/maps/dir/?api=1&destination=De%C4%8Danska%2014%2C%20Beograd"});
 
+// Late-added events must be included in the catalog total shown in the header.
+document.getElementById('totalStat').textContent=allItems.length+' мест и событий';
+
 const eventCatalogIssues=verifyEventCatalog();
 window.__eventCatalogChecks=Object.freeze({passed:eventCatalogIssues.length===0,issues:eventCatalogIssues,legacyUnscheduled:legacyUnscheduledEvents});
 if(eventCatalogIssues.length)throw new Error('Проверка афиши не пройдена: '+eventCatalogIssues.join('; '));
