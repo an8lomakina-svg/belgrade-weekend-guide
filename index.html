@@ -1499,6 +1499,11 @@ addEventCard({title:"Белградская филармония — Саша Г
 
 addEventCard({title:"«Временные бомбы» — Игор Эшкиня, Марко Тадич, BADco. и Льерка Шибеник",emoji:"🕰️",type:"Выставка · 6 ноября 2026 — 28 февраля 2027",description:"Совместная выставка Музея современного искусства Белграда и MMSU Rijeka исследует память промышленных пространств, архив и музейную инфраструктуру через видео BADco., работы Игора Эшкини, Марко Тадича и Льерки Шибеник. В экспозиции соединены коллажи, рисунки, фотографии, видео, документация и объект.",price:"Бесплатно",address:"Salon Muzeja savremene umetnosti, Pariska 14, Stari grad, Beograd",url:"https://msub.org.rs/exhibition/time-bombs-igor-eskinja-marko-tadic-badco-ljerka-sibenik/?lang=en",start:"2026-11-06",end:"2027-02-28",period:"afternoon",hours:"Вт–Вс 12:00–20:00 · 6 ноября открытие в 19:00 · пн закрыт",map:"https://www.google.com/maps/dir/?api=1&destination=Pariska%2014%2C%20Beograd"});
 
+const mesaraMoravaUsceNov2026=[["Mesara Morava — Meat Concept Store, Ušće","food","🥩","Мясной ресторан и магазин · Ушће · Новый Белград","Третий Meat Concept Store Mesara Morava в Ušće Shopping Center: блюда из мяса и продукты из собственной мясной лавки в формате быстрой повседневной остановки. Заведение находится на уровне −2, у площади перед супермаркетом.","Цены и актуальное меню — на официальном сайте","Ušće Shopping Center, Bulevar Mihajla Pupina 4, уровень −2, Novi Beograd","https://www.mesaramorava.rs/en/novosti/OTVOREN-NOVI-MESARA-MORAVA-MEAT-CONCEPT-STORE-RESTORAN"]];
+allItems.push(...mesaraMoravaUsceNov2026);
+Object.assign(checkedPlaces,{"Mesara Morava — Meat Concept Store, Ušće":{address:"Ušće Shopping Center, Bulevar Mihajla Pupina 4, уровень −2, Novi Beograd",hours:"ежедневно 10:00–22:00",source:"https://www.mesaramorava.rs/en/novosti/OTVOREN-NOVI-MESARA-MORAVA-MEAT-CONCEPT-STORE-RESTORAN",kind:"official"}});
+directMaps["Mesara Morava — Meat Concept Store, Ušće"]="https://www.google.com/maps/dir/?api=1&destination=U%C5%A1%C4%87e%20Shopping%20Center%2C%20Bulevar%20Mihajla%20Pupina%204%2C%20Beograd";
+
 // Late-added events must be included in the catalog total shown in the header.
 document.getElementById('totalStat').textContent=allItems.length+' мест и событий';
 
