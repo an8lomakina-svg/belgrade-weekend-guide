@@ -1519,6 +1519,11 @@ Object.assign(checkedPlaces,{"Sweet & Salty":{address:"Antifašističke borbe 23
 directMaps["Sweet & Salty"]="https://www.google.com/maps/dir/?api=1&destination=Antifa%C5%A1isti%C4%8Dke%20borbe%2023d%2C%20Beograd";
 Object.assign(visitorRecommendations,{"Sweet & Salty":"Перед визитом проверьте Stories заведения или позвоните: во время частного праздника ресторан закрывают для обычных гостей."});
 
+const domJevremaGrujicaNov2026=[["Дом Еврема Груича","museums","🏛️","Исторический дом-музей · дипломатия и авангард","Дом-музей в особняке 1896 года: здесь соединены история сербской дипломатии, семейные салоны и коллекция искусства. В подвале дома в 1967 году открылась первая дискотека Белграда — поэтому это не только музейная остановка, но и редкий срез городской истории.","Детям до 7 лет — бесплатно · взрослый тариф и скидки уточняйте у музея","Svetogorska 17, Stari grad, Beograd","https://en.domjevremagrujica.com/visit-us"]];
+allItems.push(...domJevremaGrujicaNov2026);
+Object.assign(checkedPlaces,{"Дом Еврема Груича":{address:"Svetogorska 17, Stari grad, Beograd",hours:"По регулярной музейной программе; вне неё посещение нужно согласовать заранее",source:"https://en.domjevremagrujica.com/visit-us",kind:"official"}});
+directMaps["Дом Еврема Груича"]="https://www.google.com/maps/dir/?api=1&destination=Svetogorska%2017%2C%20Beograd";
+
 // Late-added events must be included in the catalog total shown in the header.
 document.getElementById('totalStat').textContent=allItems.length+' мест и событий';
 
