@@ -1513,6 +1513,12 @@ directMaps["Hleb & Kifle — Beograd na vodi"]="https://www.google.com/maps/dir/
 
 addEventCard({title:"Culture Jamming Karaoke",emoji:"🎤",type:"Бесплатное событие · 7 ноября 2026",description:"Свободное караоке-вечернее событие Culture Jamming в камерном пространстве Auditoria: можно петь, слушать и танцевать без конкурсного формата. Бар площадки работает до закрытия.",price:"Вход свободный",address:"Auditoria, Vojvode Dobrnjca 48, Palilula, Beograd",url:"https://polakohedonist.club/sr/events/culture-jamming-karaoke-auditoria-2026-11-07-20-00-1",start:"2026-11-07",end:"2026-11-07",period:"evening",hours:"7 ноября · 20:30 · Auditoria",map:"https://www.google.com/maps/dir/?api=1&destination=Vojvode%20Dobrnjca%2048%2C%20Beograd"});
 
+const sweetSaltyBrunchNov2026=[["Sweet & Salty","food","🥞","Семейный ресторан · бранч-буфет · Новый Белград","Семейный ресторан с завтраком и бранч-буфетом: солёный стол с яйцами, сырами, пирогами и тёплыми блюдами дополняют круассаны, блины, торты и фрукты. У зала есть застеклённая игровая для детей, которую видно из ресторана.","Бранч: будни 1 050 RSD · выходные 1 390 RSD · детям до 12 лет 800 RSD; игровая 1 000 RSD/ребёнок","Antifašističke borbe 23d, Novi Beograd","https://www.sweetsalty.rs/en/brunch"]];
+allItems.push(...sweetSaltyBrunchNov2026);
+Object.assign(checkedPlaces,{"Sweet & Salty":{address:"Antifašističke borbe 23d, Novi Beograd",hours:"ежедневно 09:00–22:00; бранч: Пн–Пт 09:00–14:00, Сб–Вс 09:00–13:00",source:"https://www.sweetsalty.rs/en/brunch",kind:"official"}});
+directMaps["Sweet & Salty"]="https://www.google.com/maps/dir/?api=1&destination=Antifa%C5%A1isti%C4%8Dke%20borbe%2023d%2C%20Beograd";
+Object.assign(visitorRecommendations,{"Sweet & Salty":"Перед визитом проверьте Stories заведения или позвоните: во время частного праздника ресторан закрывают для обычных гостей."});
+
 // Late-added events must be included in the catalog total shown in the header.
 document.getElementById('totalStat').textContent=allItems.length+' мест и событий';
 
