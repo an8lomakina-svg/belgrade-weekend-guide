@@ -1535,6 +1535,13 @@ addEventCard({title:"Flashdance",emoji:"🎭",type:"Мюзикл · 14 нояб�
 // Official KC Grad calendar — gallery opening, November 2026.
 addEventCard({title:"The Belgrade Wallpaper Change — Christoph & Sebastian Mügge",emoji:"🖼️",type:"Открытие выставки · 29 ноября 2026 · 20:00",description:"Открытие выставки художников Christoph и Sebastian Mügge в галерее KC Grad на Савамале.",price:"Условия входа и посещения не опубликованы — уточняйте у KC Grad",address:"KC Grad, Braće Krsmanovića 4, Savamala, Beograd",url:"https://www.kcgrad.rs/calendar/",start:"2026-11-29",end:"2026-11-29",period:"evening",hours:"29 ноября · 20:00 · KC Grad",map:"https://www.google.com/maps/dir/?api=1&destination=Bra%C4%87e%20Krsmanovi%C4%87a%204%2C%20Beograd"});
 
+
+// Official location record — Taze, November 2026.
+const tazeVaseCarapicaNov2026=[["Taze — Vase Čarapića","food","🥐","Пекарня · круглосуточно · центр","Пекарня Taze с ежедневно выпекаемыми свежими изделиями, десертами и готовыми блюдами. Подходит для раннего завтрака, перекуса после прогулки по центру или поздней остановки: точка на Vase Čarapića работает без перерыва.","Цены и ассортимент — на официальном сайте и на месте","Vase Čarapića 3, Stari grad, Beograd","https://taze.co.rs/lokacije/"]];
+allItems.push(...tazeVaseCarapicaNov2026);
+Object.assign(checkedPlaces,{"Taze — Vase Čarapića":{address:"Vase Čarapića 3, Stari grad, Beograd",hours:"ежедневно 00:00–24:00",source:"https://taze.co.rs/lokacije/",kind:"official"}});
+directMaps["Taze — Vase Čarapića"]="https://www.google.com/maps/dir/?api=1&destination=Vase%20%C4%8Carapi%C4%87a%203%2C%20Beograd";
+
 // Late-added events must be included in the catalog total shown in the header.
 document.getElementById('totalStat').textContent=allItems.length+' мест и событий';
 
