@@ -1549,6 +1549,13 @@ directMaps["Космай"]="https://www.google.com/maps/dir/?api=1&destination=K
 // 2026-11-09 · Belgrade Walking Tours: ближайшая подтверждённая сессия по Земуну.
 addEventCard({title:"Free Zemun Walking Tour — 14 ноября",emoji:"🚶",type:"Пешеходная экскурсия · 14 ноября 2026 · 15:00",description:"Бесплатная прогулка по Земуну: набережная Дуная, старый город, узкие улицы и холм Гардош с Миллениумской башней. Длительность 2–2,5 часа; язык экскурсии уточните у организатора.",price:"Бесплатно · городской транспорт до Земуна оплачивается отдельно; чаевые по желанию",address:"Republic Square, за памятником князю Михаилу, Stari grad, Beograd",url:"https://www.belgradewalkingtours.com/explore-belgrade/free-zemun-tour",start:"2026-11-14",hours:"14 ноября · 15:00 · встреча на Republic Square",map:"https://www.google.com/maps/dir/?api=1&destination=Trg%20Republike%2C%20Beograd"});
 
+// 2026-11-09 · Osteria Mozzarella: итальянский ресторан в A Blok по официальным данным.
+const osteriaMozzarellaNov2026=[["Osteria Mozzarella","food","🍝","Итальянский ресторан · пицца и паста · Новый Белград","Итальянский ресторан в A Blok с меню из пиццы, пасты и других классических блюд; открыт ежедневно с утра до полуночи. Подойдёт для долгого обеда или ужина в Новом Белграде — стол можно забронировать напрямую у ресторана.","Цены и актуальное меню — на официальном сайте","Uroša Martinovića 31, A Blok, Novi Beograd","https://mozzarella.rs/"]];
+allItems.push(...osteriaMozzarellaNov2026);
+Object.assign(checkedPlaces,{"Osteria Mozzarella":{address:"Uroša Martinovića 31, A Blok, Novi Beograd",hours:"ежедневно 08:00–00:00",source:"https://mozzarella.rs/",kind:"official"}});
+directMaps["Osteria Mozzarella"]="https://www.google.com/maps/dir/?api=1&destination=Uro%C5%A1a%20Martinovi%C4%87a%2031%2C%20Beograd";
+Object.assign(visitorRecommendations,{"Osteria Mozzarella":"Если есть аллергия или диетические ограничения, сообщите персоналу до заказа: ресторан предупреждает о возможном контакте блюд с распространёнными аллергенами."});
+
 // Late-added events must be included in the catalog total shown in the header.
 document.getElementById('totalStat').textContent=allItems.length+' мест и событий';
 
