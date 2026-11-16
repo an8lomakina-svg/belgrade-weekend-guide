@@ -923,7 +923,7 @@ function renderAgenda(){
  const tomorrow=new Date(today+'T12:00:00');tomorrow.setDate(tomorrow.getDate()+1);const tomorrowValue=tomorrow.toLocaleDateString('en-CA');tomorrowButton.setAttribute('aria-pressed',String(agendaDate===tomorrowValue));
  root.replaceChildren();
  dayLabel.textContent='События на '+selectedLabel;
- if(!availableOnDate.length){const empty=document.createElement('p');empty.className='agenda-empty';empty.textContent='На этот день подтверждённых событий пока нет. Откройте все события или воспользуйтесь фильтрами.';root.appendChild(empty)}
+ if(!availableOnDate.length){const empty=document.createElement('p');empty.className='agenda-empty';empty.textContent='На этот день подтверждённых событий пока нет. Выберите другую дату или воспользуйтесь фильтрами.';root.appendChild(empty)}
  for(const x of availableOnDate)root.appendChild(agendaItem(x,selected));
  const pickDay=value=>{agendaDate=value;renderAgenda()};
  datePicker.min=today;datePicker.value=agendaDate;datePicker.onchange=()=>{if(datePicker.value)pickDay(datePicker.value)};
